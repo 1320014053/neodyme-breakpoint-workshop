@@ -68,7 +68,7 @@ fn setup() -> LocalEnvironment {
     env.execute_as_transaction(
         &[Instruction {
             program_id: helloworld_program,
-            accounts: !vec[
+            accounts: vec![
                 AccountMeta::new(buyer, true),
                 AccountMeta::new_readonly(masterMintKey, false),
                 AccountMeta::new(masterEditionPda, false),
