@@ -34,6 +34,7 @@ fn setup() -> LocalEnvironment {
     let helloworld_program =
         Pubkey::from_str("EXBuYPNgBUXMTsjCbezENRUtFQzjUNZxvPGTd11Pznk5").unwrap();
 
+    setup_logging(LogLevel::DEBUG);
 
     let buyer = keypair(0);
     let masterMintKey = keypair(1);
