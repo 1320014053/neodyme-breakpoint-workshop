@@ -51,8 +51,10 @@ fn setup() -> LocalEnvironment {
     let buyerEditionTokenAccount = keypair(12);
     let exchangeFeeRecipient = keypair(13);
     let pdaDepositAuthority = keypair(14);
-    let tokenProgram = keypair(15);
-    let tokenMetadataProgram = keypair(16);
+    //let tokenProgram = keypair(15);
+    let tokenProgram = Pubkey::from_str("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA").unwrap();
+    //let tokenMetadataProgram = keypair(16);
+    let tokenMetadataProgram = Pubkey::from_str("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s").unwrap();
     let systemProgram = keypair(17);
     let rent = keypair(18);
     let instructions = keypair(19);
@@ -107,8 +109,8 @@ fn setup() -> LocalEnvironment {
                 AccountMeta::new(buyerEditionTokenAccount.pubkey(), false),
                 AccountMeta::new(exchangeFeeRecipient.pubkey(), false),
                 AccountMeta::new_readonly(pdaDepositAuthority.pubkey(), false),
-                AccountMeta::new_readonly(tokenProgram.pubkey(), false),
-                AccountMeta::new_readonly(tokenMetadataProgram.pubkey(), false),
+                AccountMeta::new_readonly(tokenProgram, false),
+                AccountMeta::new_readonly(tokenMetadataProgram, false),
                 AccountMeta::new_readonly(system_program::id(), false),
                 AccountMeta::new_readonly(sysvar::rent::id(), false),
                 AccountMeta::new_readonly(instructions.pubkey(), false),
