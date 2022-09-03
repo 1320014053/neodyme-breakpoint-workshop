@@ -1,5 +1,7 @@
 use std::{env, str::FromStr};
 
+use crate::rent::Rent;
+
 use poc_framework::{
     keypair, solana_sdk::signer::Signer, Environment, LocalEnvironment, PrintableTransaction,
 };
@@ -9,7 +11,7 @@ use poc_framework::{
 //use helloworld::accounts as helloworld_accounts;
 //use helloworld::instruction as helloworld_instruction;
 
-use solana_program::{native_token::sol_to_lamports, pubkey::Pubkey, system_program, sysvar::Sysvar};
+use solana_program::{native_token::sol_to_lamports, pubkey::Pubkey, system_program};
 
 use solana_program::instruction::{AccountMeta, Instruction};
 
