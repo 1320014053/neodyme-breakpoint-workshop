@@ -106,7 +106,7 @@ fn setup() -> LocalEnvironment {
                 AccountMeta::new_readonly(tokenProgram.pubkey(), false),
                 AccountMeta::new_readonly(tokenMetadataProgram.pubkey(), false),
                 AccountMeta::new_readonly(system_program::id(), false),
-                AccountMeta::new_readonly(sysvar::rent::id(), false),
+                AccountMeta::new_readonly(Sysvar::Rent::id(), false),
                 AccountMeta::new_readonly(instructions.pubkey(), false),
                 AccountMeta::new(creator1.pubkey(), false),  
                 AccountMeta::new(creator2.pubkey(), false),  
