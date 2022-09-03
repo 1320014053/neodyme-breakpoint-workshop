@@ -4,7 +4,7 @@ use solana_program::rent::Rent;
 use solana_program::sysvar;
 
 use poc_framework::{
-    keypair, solana_sdk::signer::Signer, Environment, LocalEnvironment, PrintableTransaction,
+    keypair, solana_sdk::signer::Signer, Environment, LocalEnvironment, PrintableTransaction, setup_logging, LogLevel,
 };
 // Anchor
 //use anchor_client::solana_sdk::system_instruction;
