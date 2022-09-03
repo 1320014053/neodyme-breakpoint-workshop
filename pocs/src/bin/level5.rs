@@ -30,72 +30,91 @@ fn setup() -> LocalEnvironment {
 
     let helloworld_program =
         Pubkey::from_str("EXBuYPNgBUXMTsjCbezENRUtFQzjUNZxvPGTd11Pznk5").unwrap();
-    let payer = keypair(0);
-    let greeting_account = keypair(1);
-    let data: [u8; 4] = [0; 4];
+
+
+    let buyer = keypair(0);
+    let masterMintKey = keypair(1);
+    let masterEditionPda = keypair(2);
+    let masterMetadataPda = keypair(3);
+    let seller = keypair(4);
+    let saleStateAccount = keypair(5);
+    let newEditionMetadataPda = keypair(6);
+    let newEditionPda = keypair(7);
+    let newEditionMintKey = keypair(8);
+    let walletMintingState = keypair(9);
+    let editionMarkPda = keypair(10);
+    let depositAccountAddress = keypair(11);
+    let buyerEditionTokenAccount = keypair(12);
+    let exchangeFeeRecipient = keypair(13);
+    let pdaDepositAuthority = keypair(14);
+    let tokenProgram = keypair(15);
+    let tokenMetadataProgram = keypair(16);
+    let systemProgram = keypair(17);
+    let rent = keypair(18);
+    let instructions = keypair(19);
+
+    let creator1 = keypair(20);
+    let creator2 = keypair(21);
+    let creator3 = keypair(22);
+    let creator4 = keypair(23);
 
     let mut env = LocalEnvironment::builder()
         .add_program(helloworld_program, path_hello_world_binary)
-        .add_account_with_lamports(payer.pubkey(), system_program::ID, sol_to_lamports(1.0))
-        .add_account_with_data(greeting_account.pubkey(), helloworld_program, &data, false)
+        .add_account_with_lamports(buyer.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterMintKey.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterEditionPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterMetadataPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(seller.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(saleStateAccount.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionMetadataPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionMintKey.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(walletMintingState.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(editionMarkPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(depositAccountAddress.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(buyerEditionTokenAccount.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(exchangeFeeRecipient.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(pdaDepositAuthority.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator1.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator2.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator3.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator4.pubkey(), system_program::ID, sol_to_lamports(10000.0))
         .build();
 
-    let buyer = Pubkey::from_str("EE6qkv2tmjv5tmBsuwk2DGLrz99MEaNrp1sFA1cWjiZi").unwrap();
-    let masterMintKey = Pubkey::from_str("7jeCqXCecoTmPATf5mZEkgK2yFStyyGkBJotZt6wFWNz").unwrap();
-    let masterEditionPda = Pubkey::from_str("CPQpZ5yhnXQ4NRv4w4HeinbSdGZpqyMSsArZLyD7rgMd").unwrap();
-    let masterMetadataPda = Pubkey::from_str("J9MFAArJbLreJ9mbhRji6zaDQkMBkc76SFsV1wKJURT6").unwrap();
-    let seller = Pubkey::from_str("J61NWUXQPfmxinVXBqsbUT4q1j3d3ArXLvZD2Cj72QAc").unwrap();
-    let saleStateAccount = Pubkey::from_str("G8nhDmjrwBGAEcd4HtZA5F9fDbtPzuKQgRwZg5gbkZWM").unwrap();
-    let newEditionMetadataPda = Pubkey::from_str("8o11wgLYE713uGDgagmDnXarRWcecwDMs8TadE3tW5MA").unwrap();
-    let newEditionPda = Pubkey::from_str("GdThCcbG1FkosrDGeNX8mpEJ4U4rbqpsuR9XkFNq2EDG").unwrap();
-    let newEditionMintKey = Pubkey::from_str("5MS1q35S6EggGas4ny1NcPBERrCr86PSXfDrBKDgmdkV").unwrap();
-    let walletMintingState = Pubkey::from_str("BQVq2vUwZYgFnN5ywQHv6AixVSs4iGGatrFbGD2mRCQM").unwrap();
-    let editionMarkPda = Pubkey::from_str("5Lvg3pkgkv5N1yRzuP2xvBE1Dki3zQi5sh7fi1rRDKRp").unwrap();
-    let depositAccountAddress = Pubkey::from_str("CMCifpeUBJdJv6zDV99V5g7vRYSMyofc8mutPyGZaYwY").unwrap();
-    let buyerEditionTokenAccount = Pubkey::from_str("CeUBGiWvjP9DiJridu6XkLKj9bzSn1gRFPJjgtqMeC6e").unwrap();
-    let exchangeFeeRecipient = Pubkey::from_str("6482e33zrerYfhKAjPR2ncMSrH2tbTy5LDjdhB5PXzxd").unwrap();
-    let pdaDepositAuthority = Pubkey::from_str("DnAL2SfSaXzJSuaaMfjq9YuzGzy8RqmoxYqC7qExNhNG").unwrap();
-    let tokenProgram = Pubkey::from_str("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA").unwrap();
-    let tokenMetadataProgram = Pubkey::from_str("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s").unwrap();
-    let systemProgram = Pubkey::from_str("11111111111111111111111111111111").unwrap();
-    let rent = Pubkey::from_str("SysvarRent111111111111111111111111111111111").unwrap();
-    let instructions = Pubkey::from_str("Sysvar1nstructions1111111111111111111111111").unwrap();
 
-    let creator1 = Pubkey::from_str("J61NWUXQPfmxinVXBqsbUT4q1j3d3ArXLvZD2Cj72QAc").unwrap();
-    let creator2 = Pubkey::from_str("HvwPy24x79V95y1wqdqj69vcuSKYe3TvKA1QHLWR1REX").unwrap();
-    let creator3 = Pubkey::from_str("3sTPDK9XdoF8uSTdzYWhrHm8Vqy5ic6sULDTYKnZFa2J").unwrap();
-    let creator4 = Pubkey::from_str("EZGd7N1x1dFBA3e3N3erkCYWktBRh8c23BWSHyqBnsvj").unwrap();
+
+
     env.execute_as_transaction(
         &[Instruction {
             program_id: helloworld_program,
             accounts: vec![
-                AccountMeta::new(greeting_account.pubkey(), true),
-                AccountMeta::new_readonly(masterMintKey, false),
-                AccountMeta::new(masterEditionPda, false),
-                AccountMeta::new_readonly(masterMetadataPda, false),
-                AccountMeta::new_readonly(seller, false),
-                AccountMeta::new(saleStateAccount, false),
-                AccountMeta::new(newEditionMetadataPda, false),
-                AccountMeta::new(newEditionPda, false),
-                AccountMeta::new(newEditionMintKey, false),
-                AccountMeta::new(walletMintingState, false),
-                AccountMeta::new(editionMarkPda, false),
-                AccountMeta::new(depositAccountAddress, false),
-                AccountMeta::new(buyerEditionTokenAccount, false),
-                AccountMeta::new(exchangeFeeRecipient, false),
-                AccountMeta::new_readonly(pdaDepositAuthority, false),
-                AccountMeta::new_readonly(tokenProgram, false),
-                AccountMeta::new_readonly(tokenMetadataProgram, false),
-                AccountMeta::new_readonly(systemProgram, false),
-                AccountMeta::new_readonly(rent, false),
-                AccountMeta::new_readonly(instructions, false),
-                AccountMeta::new(creator1, false),  
-                AccountMeta::new(creator2, false),  
-                AccountMeta::new(creator3, false),  
-                AccountMeta::new(creator4, false)],
+                AccountMeta::new(buyer.pubkey(), true),
+                AccountMeta::new_readonly(masterMintKey.pubkey(), false),
+                AccountMeta::new(masterEditionPda.pubkey(), false),
+                AccountMeta::new_readonly(masterMetadataPda.pubkey(), false),
+                AccountMeta::new_readonly(seller.pubkey(), false),
+                AccountMeta::new(saleStateAccount.pubkey(), false),
+                AccountMeta::new(newEditionMetadataPda.pubkey(), false),
+                AccountMeta::new(newEditionPda.pubkey(), false),
+                AccountMeta::new(newEditionMintKey.pubkey(), false),
+                AccountMeta::new(walletMintingState.pubkey(), false),
+                AccountMeta::new(editionMarkPda.pubkey(), false),
+                AccountMeta::new(depositAccountAddress.pubkey(), false),
+                AccountMeta::new(buyerEditionTokenAccount.pubkey(), false),
+                AccountMeta::new(exchangeFeeRecipient.pubkey(), false),
+                AccountMeta::new_readonly(pdaDepositAuthority.pubkey(), false),
+                AccountMeta::new_readonly(tokenProgram.pubkey(), false),
+                AccountMeta::new_readonly(tokenMetadataProgram.pubkey(), false),
+                AccountMeta::new_readonly(system_program::id(), false),
+                AccountMeta::new_readonly(sysvar::rent::id(), false),
+                AccountMeta::new_readonly(instructions.pubkey(), false),
+                AccountMeta::new(creator1.pubkey(), false),  
+                AccountMeta::new(creator2.pubkey(), false),  
+                AccountMeta::new(creator3.pubkey(), false),  
+                AccountMeta::new(creator4.pubkey(), false)],
             data: vec![0xa7, 0x34, 0xe2, 0xad, 0xfd, 0xe9, 0xbf, 0x3e, 0x61, 0x5a, 0x12, 0x63, 0x80, 0x90, 0x20, 0x29, 0x00, 0x00, 0x00, 0x00, 0xe1, 0xfd, 0x1b, 0x50, 0xb6, 0x52, 0xdc, 0x85, 0xc9, 0x47, 0xa1, 0x33, 0xee, 0x34, 0xf6, 0xec, 0x8e, 0xe2, 0x9e, 0x1e, 0xda, 0xe7, 0x1a, 0x6a, 0x05, 0x2d, 0x2d, 0xea, 0x12, 0xd8, 0xd1, 0xc1],
         }],
-        &[&greeting_account],
+        &[&buyer],
     )
     .print();
 
