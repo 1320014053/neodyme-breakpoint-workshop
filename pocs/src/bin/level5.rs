@@ -9,7 +9,7 @@ use poc_framework::{
 //use helloworld::accounts as helloworld_accounts;
 //use helloworld::instruction as helloworld_instruction;
 
-use solana_program::{native_token::sol_to_lamports, pubkey::Pubkey, system_program};
+use solana_program::{native_token::sol_to_lamports, pubkey::Pubkey, system_program, rent::Rent, sysvar::Sysvar};
 
 use solana_program::instruction::{AccountMeta, Instruction};
 
