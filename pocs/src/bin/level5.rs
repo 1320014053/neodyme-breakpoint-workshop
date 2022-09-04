@@ -45,7 +45,8 @@ fn setup() -> LocalEnvironment {
     let newEditionMetadataPda = keypair(6);
     let newEditionPda = keypair(7);
     let newEditionMintKey = keypair(8);
-    let walletMintingState = keypair(9);
+    //let walletMintingState = keypair(9);
+    let walletMintingState = create_program_address(&[&["escrow2"]],&system_program::ID);
     let editionMarkPda = keypair(10);
     let depositAccountAddress = keypair(11);
     let buyerEditionTokenAccount = keypair(12);
