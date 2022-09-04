@@ -76,7 +76,6 @@ fn setup() -> LocalEnvironment {
         .add_account_with_lamports(newEditionMetadataPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
         .add_account_with_lamports(newEditionPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
         .add_account_with_lamports(newEditionMintKey.pubkey(), helloworld_program, sol_to_lamports(10000.0))
-        .add_account_with_data(walletMintingState,helloworld_program,)
         .add_account_with_lamports(walletMintingState, helloworld_program, sol_to_lamports(10000.0))
         .add_account_with_lamports(editionMarkPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
         .add_account_with_lamports(depositAccountAddress.pubkey(), helloworld_program, sol_to_lamports(10000.0))
