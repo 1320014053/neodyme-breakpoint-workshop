@@ -46,7 +46,7 @@ fn setup() -> LocalEnvironment {
     let newEditionPda = keypair(7);
     let newEditionMintKey = keypair(8);
     //let walletMintingState = keypair(9);
-    let walletMintingState = create_program_address(&[&["escrow2"]],&system_program::ID);
+    let walletMintingState = Pubkey::create_program_address(&[&[1,2,3,4,5]],&helloworld_program).unwrap();
     let editionMarkPda = keypair(10);
     let depositAccountAddress = keypair(11);
     let buyerEditionTokenAccount = keypair(12);
@@ -67,25 +67,25 @@ fn setup() -> LocalEnvironment {
 
     let mut env = LocalEnvironment::builder()
         .add_program(helloworld_program, path_hello_world_binary)
-        .add_account_with_lamports(buyer.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(masterMintKey.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(masterEditionPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(masterMetadataPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(seller.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(saleStateAccount.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(newEditionMetadataPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(newEditionPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(newEditionMintKey.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(walletMintingState.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(editionMarkPda.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(depositAccountAddress.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(buyerEditionTokenAccount.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(exchangeFeeRecipient.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(pdaDepositAuthority.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(creator1.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(creator2.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(creator3.pubkey(), system_program::ID, sol_to_lamports(10000.0))
-        .add_account_with_lamports(creator4.pubkey(), system_program::ID, sol_to_lamports(10000.0))
+        .add_account_with_lamports(buyer.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterMintKey.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterEditionPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterMetadataPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(seller.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(saleStateAccount.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionMetadataPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionMintKey.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(walletMintingState, helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(editionMarkPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(depositAccountAddress.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(buyerEditionTokenAccount.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(exchangeFeeRecipient.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(pdaDepositAuthority.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator1.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator2.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator3.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator4.pubkey(), helloworld_program, sol_to_lamports(10000.0))
         .build();
 
 
@@ -104,7 +104,7 @@ fn setup() -> LocalEnvironment {
                 AccountMeta::new(newEditionMetadataPda.pubkey(), false),
                 AccountMeta::new(newEditionPda.pubkey(), false),
                 AccountMeta::new(newEditionMintKey.pubkey(), false),
-                AccountMeta::new(walletMintingState.pubkey(), false),
+                AccountMeta::new(walletMintingState, false),
                 AccountMeta::new(editionMarkPda.pubkey(), false),
                 AccountMeta::new(depositAccountAddress.pubkey(), false),
                 AccountMeta::new(buyerEditionTokenAccount.pubkey(), false),
