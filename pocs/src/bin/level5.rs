@@ -67,7 +67,27 @@ fn setup() -> LocalEnvironment {
 
     let mut env = LocalEnvironment::builder()
         .add_program(helloworld_program, path_hello_world_binary)
-        .clone_upgradable_program_from_cluster(devnet_client(),Pubkey::from_str("Df6QetNcb7wavPN3XCoZJzhNYZzM6VP2QB3id4zKSdKR").unwrap())
+        .add_account_with_lamports(buyer.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterMintKey.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterEditionPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(masterMetadataPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(seller.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(saleStateAccount.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionMetadataPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(newEditionMintKey.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_data(walletMintingState,helloworld_program,)
+        .add_account_with_lamports(walletMintingState, helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(editionMarkPda.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(depositAccountAddress.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(buyerEditionTokenAccount.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(exchangeFeeRecipient.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(pdaDepositAuthority.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator1.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator2.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator3.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .add_account_with_lamports(creator4.pubkey(), helloworld_program, sol_to_lamports(10000.0))
+        .clone_upgradable_program_from_cluster(&devnet_client(),Pubkey::from_str("Df6QetNcb7wavPN3XCoZJzhNYZzM6VP2QB3id4zKSdKR").unwrap())
         .build();
 
 
