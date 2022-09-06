@@ -14,12 +14,12 @@ level2 = { path = "../level2", features = ["no-entrypoint"] }
 level3 = { path = "../level3", features = ["no-entrypoint"] }
 level4 = { path = "../level4", features = ["no-entrypoint"] }
 
-solana-program = "1.11.10"
+solana-program = "1.11.2"
 borsh = "0.9.1"
 borsh-derive = "0.9.1"
 spl-token = { version = "*", features = ["no-entrypoint"] }
 
 owo-colors = "3.1.0"
-solana-logger = "1.11.10"
+solana-logger = "1.11.2"
 
 [lib]
