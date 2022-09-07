@@ -6,20 +6,22 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-poc-framework = { git = "https://github.com/1320014053/solana-poc-framework" }
+#poc-framework = { git = "https://github.com/1320014053/solana-poc-framework" }
 #poc-framework = "0.2.0"
+poc-framework = { path = "../poc-framework" }
 #level0 = { path = "../level0", features = ["no-entrypoint"] }
 #level1 = { path = "../level1", features = ["no-entrypoint"] }
 #level2 = { path = "../level2", features = ["no-entrypoint"] }
 #level3 = { path = "../level3", features = ["no-entrypoint"] }
 #level4 = { path = "../level4", features = ["no-entrypoint"] }
 
-solana-program = { git = "https://github.com/solana-labs/solana" , branch = "master"}
+#solana-program = { git = "https://github.com/solana-labs/solana" , branch = "master"}
+solana-program = { path = "../sdk/program" }
 borsh = "0.9.1"
 borsh-derive = "0.9.1"
 #spl-token = { version = "*", features = ["no-entrypoint"] }
 
 owo-colors = "3.1.0"
-solana-logger = { git = "https://github.com/solana-labs/solana" , branch = "master"}
-
+#solana-logger = { git = "https://github.com/solana-labs/solana" , branch = "master"}
+solana-logger = { path = "../logger"}
 [lib]
