@@ -19,7 +19,7 @@ poc-framework = { path = "../poc-framework/" }
 solana-program = { path = "../sdk/program/" }
 borsh = "0.9.1"
 borsh-derive = "0.9.1"
-#spl-token = { version = "*", features = ["no-entrypoint"] }
+spl-token = { version = "*", features = ["no-entrypoint"] }
 
 owo-colors = "3.1.0"
 #solana-logger = { git = "https://github.com/solana-labs/solana" , branch = "master"}
