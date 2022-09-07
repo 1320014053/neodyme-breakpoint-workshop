@@ -14,12 +14,12 @@ poc-framework = { git = "https://github.com/1320014053/solana-poc-framework" }
 #level3 = { path = "../level3", features = ["no-entrypoint"] }
 #level4 = { path = "../level4", features = ["no-entrypoint"] }
 
-solana-program = { git = "https://github.com/solana-labs/solana.git" , branch = "main"}
+solana-program = { git = "https://github.com/solana-labs/solana.git" , branch = "master"}
 borsh = "0.9.1"
 borsh-derive = "0.9.1"
 #spl-token = { version = "*", features = ["no-entrypoint"] }
 
 owo-colors = "3.1.0"
-solana-logger = { git = "https://github.com/solana-labs/solana.git" , branch = "main"}
+solana-logger = { git = "https://github.com/solana-labs/solana.git" , branch = "master"}
 
 [lib]
